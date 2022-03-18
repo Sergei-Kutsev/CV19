@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV19", "CV19\CV19.csproj", "{F9884499-B515-41ED-8088-21EF4CC228A8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{89063FD5-8B3A-4828-8DB1-99958E7EFA06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV19Console", "Tests\CV19Console\CV19Console.csproj", "{0FFB8782-307A-401C-9148-999B0D74A1E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{F9884499-B515-41ED-8088-21EF4CC228A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9884499-B515-41ED-8088-21EF4CC228A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9884499-B515-41ED-8088-21EF4CC228A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FFB8782-307A-401C-9148-999B0D74A1E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FFB8782-307A-401C-9148-999B0D74A1E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FFB8782-307A-401C-9148-999B0D74A1E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FFB8782-307A-401C-9148-999B0D74A1E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0FFB8782-307A-401C-9148-999B0D74A1E9} = {89063FD5-8B3A-4828-8DB1-99958E7EFA06}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {72506888-6690-407B-83BC-F4C77E76AECB}
