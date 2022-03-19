@@ -9,15 +9,60 @@
         Height="450" Width="800" >
     <!--фигурные скобки показывают, что внутри будет находиться не обычное значение, а расширение разметки-->
     <Window.DataContext>
-    <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Выход"/>
+            </MenuItem>
+            <MenuItem Header="Помощь">
+                <MenuItem Header="О программе"/>
+            </MenuItem>
+        </Menu>
         
-        <!--привяжем к свойству текст Title и привяжем--> 
-        <TextBox Margin="404,63,276,314" 
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem >
+                <TextBlock Text="1234"  MaxWidth="300" MinWidth="150"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <ProgressBar Width="120" Height="14" Value="30"/>
+            </StatusBarItem>
+        </StatusBar>
+        <TabControl>
+            <TabItem Header="Вкладка 1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="47*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="235*"/>
+                        <ColumnDefinition Width="559*"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle Grid.Column="0" Grid.Row="0" 
+                               Fill="Blue" 
+                               Stroke="Red" 
+                               StrokeThickness="3" 
+                               RadiusX="5" RadiusY="7"/>
+                    <Ellipse Grid.Column="1" Grid.Row="0" 
+                               Fill="Blue" 
+                               Stroke="Red" 
+                               StrokeThickness="3"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Вкладка 2"></TabItem>
+        </TabControl>
+
+        <!--привязывем в Value Title и снова меняется название
+        <Slider VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30" Width="300" 
+                Value="{Binding Title}"/>-->
+
+        <!--привяжем к свойству текст Title и привяжем UpdateSourceTrigger, что будет менять сразу название заголовка прямо в коне-->
+        <!--<TextBox Margin="404,63,276,314" 
                  Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" 
                  TextWrapping="Wrap" 
-                 Width="120"/>
+                 Width="120"/>-->
 
-    </Grid>
+    </DockPanel>
 </Window>
