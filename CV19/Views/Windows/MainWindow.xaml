@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" mc:Ignorable="d"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:cmd="clr-namespace:CV19.Infrastructure.Commands.Base"
         xmlns:vm="clr-namespace:CV19.ViewModels"
         xmlns:l="clr-namespace:CV19"
@@ -56,7 +57,17 @@
             </StatusBarItem>
         </StatusBar>
         <TabControl>
-            <TabItem Header="Вкладка 1">
+            <!--тип Header принимает тип object, значит его можно развернуть-->
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        
+                       <!--подключаем пакет NuGet с шрифтами и иконками FontAwesome5, подключаем их вверху к окну и используем в разметке-->
+                        <fa:ImageAwesome Icon="Regular_Angry" Height="13" Margin="0,0,5,0" Foreground="Red"/>
+                        <TextBlock Text="Вкладка 1"/>
+                    </StackPanel>
+                </TabItem.Header>
+            
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50*"/>
