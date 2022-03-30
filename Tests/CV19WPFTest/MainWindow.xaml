@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="115,67,0,0" VerticalAlignment="Top" Height="94" Width="132"/>
+        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="266,0,0,0" VerticalAlignment="Center"/>
+        <Slider HorizontalAlignment="Left" Margin="227,333,0,0" VerticalAlignment="Top" Width="432" Height="40"/>
+        <Rectangle HorizontalAlignment="Left" Height="100" Margin="559,0,0,0" Stroke="Black" VerticalAlignment="Center" Width="100"/>
+        <PasswordBox HorizontalAlignment="Left" Margin="371,149,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="384,38,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="76"/>
+        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="455,277,0,0" VerticalAlignment="Top" Height="48" Width="118"/>
 
     </Grid>
 </Window>
