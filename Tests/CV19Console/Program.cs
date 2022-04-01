@@ -35,19 +35,39 @@ namespace CV19Console
                 var line = data_reader.ReadLine(); //извлекаем из ридера очередную строку и помещаем её в переменную
 
                 if (string.IsNullOrWhiteSpace(line)) continue; //проверяем что строка не пуста, если что, то пропускаем ее и делаем следующий цикл
-                yield return line;
+
+                yield return line.Replace("Korea,", "Korea -").Replace("Bonaire,", "Bonaire ").Replace("Helena,", "Helena ");
+               // yield return line.Replace("Bonaire,", "Bonaire");
+
             }
         }
 
         private static DateTime[] GetDates() => GetDataLines() //получаем перечисление строк всего запроса
             .First() //берем только первую строку
             .Split(',') //берем первую строку и разбиваем строку по разделителю запятой
-            //итого получаем строку с заголовками
+                        //итого получаем строку с заголовками
             .Skip(4) //отбрасываем первые четыре (страна, провинция, широта и долгота)
             .Select(s => DateTime.Parse(s, CultureInfo.InvariantCulture)) //оставшиеся строки преобразуем в DateTime
             .ToArray();
 
+        //получаем данные по количеству зараженных по каждой стране и каждой провиниции этой стране
+        private static IEnumerable<(string Country, string Province, int[] Counts)> GetData()//эта структура называется кортэж, которая позволяет быстро определить структуру данных с нужным набором свойств
+                                                                                             //кортеж отличается от анонимного класса тем, что эта структура создается на стеке вызова и не требует работы сборщика мусора
+        {
+            var lines = GetDataLines()//это перечисление всех строк, которые мы можем извлечь из файла
+        .Skip(1) //первую строку отбрасываем
+                  .Select(line => line.Split(',')); //получаем перечисление массива строк, где каждый элемент это ячейка таблицы
 
+            foreach (var row in lines)
+            {
+                var province = row[0].Trim();//метод Trim обрезает все лишнее в строке (пробелы, спец. символы)
+                var country_name = row[1].Trim(' ', '"');//метод Trim обрезает все лишнее в строке (пробелы, спец. символы)
+                var counts = row.Skip(4)
+                    .Select(int.Parse)
+                    .ToArray();
+                yield return (country_name, province, counts);
+            }
+        }
 
         static void Main(string[] args)
         {
@@ -62,8 +82,13 @@ namespace CV19Console
             //foreach (var data_line in GetDataLines())
             //    Console.WriteLine(data_line);
 
-            var dates = GetDates();
-            Console.WriteLine(string.Join("\r\n", dates));
+            //var dates = GetDates();
+            //Console.WriteLine(string.Join("\r\n", dates));
+
+            var russia_data = GetData()
+                .First(v => v.Country.Equals("Russia", StringComparison.OrdinalIgnoreCase)); //находим только россию
+
+            Console.WriteLine(string.Join("\r\n", GetDates().Zip(russia_data.Counts, (date, count) => $"{date:dd:MM} - {count}"))); //выводим в правильном формате
 
             Console.ReadLine();
         }
