@@ -46,20 +46,34 @@
             <MenuItem Header="Помощь">
                 <MenuItem Header="О программе"/>
             </MenuItem>
+            <MenuItem Command="{Binding ChangeTabIndexCommand}" CommandParameter="-1">
+                <MenuItem.Header>
+                    <fa:ImageAwesome Height="12" Icon="Regular_ArrowAltCircleLeft"/>
+                </MenuItem.Header>
+            </MenuItem>
+
+            <MenuItem Command="{Binding ChangeTabIndexCommand}" CommandParameter="+1">
+                <MenuItem.Header>
+                    <fa:ImageAwesome Height="12" Icon="Regular_ArrowAltCircleRight"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <!--<MenuItem Header="{Binding SelectedPageIndex}" IsEnabled="False"/>-->
+
         </Menu>
 
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem >
-                <TextBlock Text="1234"  MaxWidth="300" MinWidth="150"/>
+                <TextBlock Text="Готов!"  MaxWidth="300" MinWidth="150"/>
             </StatusBarItem>
             <StatusBarItem>
                 <ProgressBar Width="120" Height="14" Value="30"/>
             </StatusBarItem>
+            <StatusBarItem Content="{Binding SelectedPageIndex}" />
         </StatusBar>
-        
+
         <!--TabControl это списочный элемент управления - просто список содержимого. TabItem это тоже самое, что и в -->
         <!--ListView позиция-->
-        <TabControl>
+        <TabControl SelectedIndex="{Binding SelectedPageIndex}">
             <TabItem Header="График">
                 <oxy:Plot>
                     <oxy:Plot.Axes>
@@ -72,8 +86,8 @@
                                     DataFieldY="YValue"/>
                 </oxy:Plot>
             </TabItem>
-         
-            <TabItem Visibility="Collapsed">
+
+            <TabItem>
                 <!--тип Header принимает тип object, значит его можно развернуть-->
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -108,6 +122,9 @@
                     </Ellipse>
                 </Grid>
             </TabItem>
+            <TabItem Header="Вкладка 2"></TabItem>
+            <TabItem Header="Вкладка 3"></TabItem>
+            <TabItem Header="Вкладка 4"></TabItem>
         </TabControl>
 
         <!--привязывем в Value Title и снова меняется название
