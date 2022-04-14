@@ -71,9 +71,34 @@
             <StatusBarItem Content="{Binding SelectedPageIndex}" />
         </StatusBar>
 
+       
+
         <!--TabControl это списочный элемент управления - просто список содержимого. TabItem это тоже самое, что и в -->
         <!--ListView позиция-->
         <TabControl SelectedIndex="{Binding SelectedPageIndex}">
+
+            <TabItem Header="Вкладка 1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <!--<ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>-->
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Grid.Column="0" Header="Группы">
+                        <!--У списочных элементов (ComboBox, ListBox, ListView) есть св-во DisplayMemberPath и SelectedMemberPath, которое отобразит--> 
+                        <!--содержимое указанного свойства в классе из ItemSource --> 
+                        <ListBox ItemsSource="{Binding Groups}" DisplayMemberPath="Name"/>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1" Header="Студенты">
+                        <!--DataGrid - мощный инструмент для визуализации большого кол-ва данных в табличном виде. Очень быстрый.-->
+                        <DataGrid>
+                            
+                        </DataGrid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
             <TabItem Header="График">
                 <oxy:Plot>
                     <oxy:Plot.Axes>
@@ -87,6 +112,11 @@
                 </oxy:Plot>
             </TabItem>
 
+            
+         
+            <TabItem Header="Вкладка 2"></TabItem>
+            <TabItem Header="Вкладка 3"></TabItem>
+            <TabItem Header="Вкладка 4"></TabItem>
             <TabItem>
                 <!--тип Header принимает тип object, значит его можно развернуть-->
                 <TabItem.Header>
@@ -94,7 +124,7 @@
 
                         <!--подключаем пакет NuGet с шрифтами и иконками FontAwesome5, подключаем их вверху к окну и используем в разметке-->
                         <fa:ImageAwesome Icon="Regular_Angry" Height="13" Margin="0,0,5,0" Foreground="Red"/>
-                        <TextBlock Text="Вкладка 1"/>
+                        <TextBlock Text="Красота"/>
                     </StackPanel>
                 </TabItem.Header>
 
@@ -122,9 +152,7 @@
                     </Ellipse>
                 </Grid>
             </TabItem>
-            <TabItem Header="Вкладка 2"></TabItem>
-            <TabItem Header="Вкладка 3"></TabItem>
-            <TabItem Header="Вкладка 4"></TabItem>
+            
         </TabControl>
 
         <!--привязывем в Value Title и снова меняется название
